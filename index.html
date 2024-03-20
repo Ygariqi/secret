@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret</title>
+<style>
+  .container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  button {
+    font-size: 180px;
+    padding: 100px 200px;
+    margin: 1000px;
+  }
+  p {
+    font-size: 240px;
+  }
+</style>
+</head>
+<body>
+<div class="container" id="question1">
+  <button onclick="showQuestion('question2')">Далее</button>
+</div>
+<div class="container" id="question2" style="display: none;">
+  <p>Продолжить?</p>
+  <button onclick="showQuestion('question3')">Да</button>
+  <button onclick="closePage()">Нет</button>
+</div>
+<div class="container" id="question3" style="display: none;">
+  <p>Точно?</p>
+  <button onclick="showText()">Да</button>
+  <button onclick="closePage()">Нет</button>
+</div>
+<div class="container" id="question4" style="display: none;">
+  <p>Уверени?</p>
+  <button onclick="showText()">Да</button>
+  <button onclick="closePage()">Нет</button>
+</div>
+<div class="container" id="text" style="display: none; margin-top: 1500px;">
+  <p>Хуй...</p>
+</div>
+
+<script>
+function showQuestion(id) {
+  var currentQuestion = document.querySelector('.container:not([style*="none"])');
+  var nextQuestion = document.getElementById(id);
+  currentQuestion.style.display = 'none';
+  nextQuestion.style.display = 'block';
+}
+
+function showText() {
+  var currentQuestion = document.querySelector('.container:not([style*="none"])');
+  var text = document.getElementById('text');
+  currentQuestion.style.display = 'none';
+  text.style.display = 'block';
+}
+
+function closePage() {
+  window.close();
+}
+</script>
+</body>
+</html>
